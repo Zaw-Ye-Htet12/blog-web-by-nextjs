@@ -16,7 +16,7 @@ function slugify(str: string) {
 
 function createHeading(level: number) {
   const Heading = ({ children }: any) => {
-    let slug = slugify(children);
+    const slug = slugify(children);
     return React.createElement(
       `h${level}`,
       { id: slug },
@@ -40,7 +40,7 @@ function RoundImage(props: any) {
 }
 
 function CustomLink(props: any) {
-  let href = props.href;
+  const href = props.href;
 
   if (href.startsWith("/")) {
     return (
@@ -58,7 +58,7 @@ function CustomLink(props: any) {
 }
 
 function Code({ children, ...props }: any) {
-  let codeHTML = highlight(children);
+  const codeHTML = highlight(children);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
@@ -72,11 +72,11 @@ function Blockquote(props: any) {
 }
 
 function Table({ data }: any) {
-  let headers = data.headers.map((header: any, index: any) => (
+  const headers = data.headers.map((header: any, index: any) => (
     <th key={index}>{header}</th>
   ));
 
-  let rows = data.rows.map((cell: any, cellIndex: any) => (
+  const rows = data.rows.map((cell: any, cellIndex: any) => (
     <td key={cellIndex}>{cell}</td>
   ));
 
@@ -90,7 +90,7 @@ function Table({ data }: any) {
   );
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),

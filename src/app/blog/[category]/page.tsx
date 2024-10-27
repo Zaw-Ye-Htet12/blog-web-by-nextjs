@@ -7,14 +7,14 @@ import CardCategory from "@/components/CardCategory";
 import Header from "@/components/header";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  const posts = getBlogPosts();
   return posts.map((post) => ({
     category: post.metadata.category,
   }));
 }
 
 const Page = ({ params }: { params: { category: string } }) => {
-  let posts = getBlogPosts().filter(
+  const posts = getBlogPosts().filter(
     (post) => post.metadata.category === params.category
   );
   if (!posts) {
@@ -40,7 +40,7 @@ const Page = ({ params }: { params: { category: string } }) => {
               }
             })
             .map((post) => (
-              <Link href={`/blog/${post.metadata.category}/${post.slug}`}>
+              <Link href={`/blog/${post.metadata.category}/${post.slug}`} key={post.metadata.title}>
                 <CardCategory
                   title={post.metadata.title}
                   summary={post.metadata.summary}

@@ -28,8 +28,8 @@ function readMdxFile(filePath: fs.PathOrFileDescriptor) {
 function getMdxData(dir: string) {
     const mdxFiles = getAllMdxFiles(dir);
     return mdxFiles.map((file) => {
-        let { data: metadata, content } = readMdxFile(file);
-        let slug = path.basename(file, path.extname(file));
+        const { data: metadata, content } = readMdxFile(file);
+        const slug = path.basename(file, path.extname(file));
 
         return { metadata, content, slug };
     })
@@ -43,16 +43,16 @@ export function getBlogPosts() {
 
 // data formatting for status
 export function formatDate(date: string, includeRelative = true) {
-    let currentDate = new Date();
+    const currentDate = new Date();
     if (!date.includes("T")) {
         date = `${date}T00:00:00`;
     }
 
-    let targetDate = new Date(date);
+    const targetDate = new Date(date);
 
-    let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-    let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-    let daysAgo = currentDate.getDate() - targetDate.getDate();
+    const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
+    const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
+    const daysAgo = currentDate.getDate() - targetDate.getDate();
 
     let formattedDate = "";
 
@@ -66,7 +66,7 @@ export function formatDate(date: string, includeRelative = true) {
         formattedDate = "Today";
     }
 
-    let fullDate = targetDate.toLocaleString("en-us", {
+    const fullDate = targetDate.toLocaleString("en-us", {
         month: "long",
         day: "numeric",
         year: "numeric",

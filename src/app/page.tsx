@@ -3,7 +3,6 @@ import LatestPost from "@/components/home/latest-post";
 import PopularPosts from "@/components/home/popular-post";
 import TopCategories from "@/components/home/top-category";
 import { MainNav } from "@/components/main-nav";
-import Image from "next/image";
 
 export default function Home() {
   return (

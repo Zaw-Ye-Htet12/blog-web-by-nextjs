@@ -7,14 +7,14 @@ import { notFound } from "next/navigation";
 import CustomerMDX from "@/components/mdx";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  const posts = getBlogPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 const Page = ({ params }: { params: { category: string; slug: string } }) => {
-  let post = getBlogPosts().find((blog) => blog.slug === params.slug);
+  const post = getBlogPosts().find((blog) => blog.slug === params.slug);
   if (!post) {
     notFound();
   }
