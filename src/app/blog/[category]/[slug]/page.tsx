@@ -5,6 +5,7 @@ import { BreadcrumbWithCustomSeparator } from "@/components/BreadCrumb";
 import Container from "@/components/Container";
 import { notFound } from "next/navigation";
 import CustomerMDX from "@/components/mdx";
+import ReportView from "@/components/ReportView";
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
@@ -21,6 +22,7 @@ const Page = ({ params }: { params: { category: string; slug: string } }) => {
 
   return (
     <>
+      <ReportView slug={ post.slug} category={post.metadata.category} title={post.metadata.title} />
       <Header>
         <Container>
           <BreadcrumbWithCustomSeparator
