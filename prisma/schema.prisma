@@ -25,6 +25,6 @@ model Blog{
 
 model Subscriber{
   id              Int     @id @default(autoincrement())
-  email           String
+  email           String  @unique
   is_subscribed   Boolean @default(true)
 }

@@ -1,11 +1,17 @@
+'use client'
 import React from "react";
 import { Icons } from "./icon";
 import { POSTS } from "@/lib/constant";
 import Link from "next/link";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { createSubscriber } from "@/lib/action";
+import { useFormState } from "react-dom";
+import { State } from '@/lib/action';
 
 const Footer = () => {
+  const initialState: State = { message: "", errors: {} };
+  const [ state, dispatch ] = useFormState(createSubscriber, initialState)
   return (
     <footer className="bg-gray-100 py-8 mt-10 dark:bg-gray-800 ">
       <div className="container mx-auto px-4 md:px-6">
@@ -72,13 +78,29 @@ const Footer = () => {
               Subscribe to our newsletter to stay up-to-date with the latest
               news and updates.
             </p>
-            <div className="flex flex-col space-y-2 lg:space-x-2 lg:flex-row">
+            <form
+              action={dispatch}
+              className="flex flex-col space-y-2 lg:space-x-2 lg:flex-row"
+            >
               <Input
                 type="email"
+                name="email"
+                aria-describedby="email-error"
                 placeholder="Enter your email"
-                className="flex-1"
+                className="flex-1 dark:bg-white dark:text-black"
               />
               <Button className="">Subscribe</Button>
+            </form>
+            <div id="email-error" aria-label="polite" aria-atomic="true">
+              {state?.errors?.email &&
+                state.errors.email.map((error: string) => (
+                  <p key={error} className="text-xs text-red-500">
+                    {error}
+                  </p>
+                ))}
+              {!state?.errors?.email && (
+                <p className="text-xs text-green-500">{state?.message}</p>
+              )}
             </div>
           </div>
         </div>
