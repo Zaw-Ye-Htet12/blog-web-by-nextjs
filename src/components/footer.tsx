@@ -59,7 +59,7 @@ const Footer = () => {
                   href="/terms-of-services"
                   className="text-gray-500 dark:text-gray-100 hover:text-black dark:hover:text-gray-500 "
                 >
-                  Contacts
+                  Terms of Services
                 </Link>
               </li>
               <li className="">
@@ -67,7 +67,7 @@ const Footer = () => {
                   href="/privacy-policy"
                   className="text-gray-500 dark:text-gray-100 hover:text-black dark:hover:text-gray-500 "
                 >
-                  Contacts
+                  Privacy Policy
                 </Link>
               </li>
             </ul>

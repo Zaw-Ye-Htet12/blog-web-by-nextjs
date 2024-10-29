@@ -41,6 +41,14 @@ export function getBlogPosts() {
     return getMdxData(path.join(process.cwd(), 'src', 'app', 'blog', 'contents'));
 }
 
+export function getTermsOfServices() {
+    return getMdxData(path.join(process.cwd(), 'src', 'app', 'terms-of-services'));
+}
+
+export function getPrivacyPolicy() {
+    return getMdxData(path.join(process.cwd(), 'src', 'app', 'privacy-policy'));
+}
+
 // data formatting for status
 export function formatDate(date: string, includeRelative = true) {
     const currentDate = new Date();
